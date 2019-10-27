@@ -47,6 +47,6 @@ David Whisler
 
 ## Notes
 
-<b id="f1">1</b> The `pipenv` tool works by making project-specific directories (called virtual environments) that hold the dependencies for that project. Setting the `PIPENV_VENV_IN_PROJECT` environment variable will indicate to `pipenv` to make this virtual environment within the same directory as the project so that all the files corresponding to a project can be in the same place. This is [not default behavior](https://github.com/pypa/pipenv/issues/1382) (e.g. on Mac, the environments will be placed in `~/.local/share/virtualenv/`). [↩](#a1)
+<b id="f1">1</b> The `pipenv` tool works by making project-specific directories (called virtual environments) that hold the dependencies for that project. Setting the `PIPENV_VENV_IN_PROJECT` environment variable will indicate to `pipenv` to make this virtual environment within the same directory as the project so that all the files corresponding to a project can be in the same place. This is [not default behavior](https://github.com/pypa/pipenv/issues/1382) (e.g. on Mac, the environments will be placed in `~/.local/share/virtualenvs/`). [↩](#a1)
 
 
