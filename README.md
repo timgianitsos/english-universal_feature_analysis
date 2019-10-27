@@ -1,4 +1,4 @@
-# Final Project - CS 221 Artificial Intelligence: Principles and Techniques
+# A Diachronic approach to English
 
 ## Authors
 Andy Kim
@@ -12,7 +12,7 @@ David Whisler
 1. Ensure `Python` version 3.8 is installed.
 1. Ensure `pipenv` is installed
 1. (Optional) Set an environment variable <sup id="a1">[1](#f1)</sup> by executing the following lines.
-	If your system uses `~/.bash_profile` (Mac for example), then run the commands with `~/.bash_profile`. If your system uses `~/.bashrc`(Linux for example), then replace `~/.bash_profile` with `~/.bashrc` in the below commands.
+	If your system uses `~/.bash_profile` (Mac for example), then run the commands exactly as they appear below. If your system uses `~/.bashrc`(Linux for example), then replace `~/.bash_profile` with `~/.bashrc` in the below commands.
 	```bash
 	echo "#When pipenv makes a virtual environment, it will create it in the same directory as the project instead of in the home directory" >> ~/.bash_profile
 	echo "PIPENV_VENV_IN_PROJECT=true" >> ~/.bash_profile
