@@ -11,7 +11,7 @@ David Whisler
 
 1. Ensure `Python` version 3.8 is installed.
 1. Ensure `pipenv` is installed
-1. (Optional) Set an environment variable[¹] by executing the following lines.  
+1. (Optional) Set an environment variable <sup id="a1">[1](#f1)</sup> by executing the following lines.
 	If your system uses `~/.bash_profile` (Mac for example), then run the commands with `~/.bash_profile`. If your system uses `~/.bashrc`(Linux for example), then replace `~/.bash_profile` with `~/.bashrc` in the below commands.
 	```bash
 	echo "#When pipenv makes a virtual environment, it will create it in the same directory as the project instead of in the home directory" >> ~/.bash_profile
@@ -47,6 +47,6 @@ David Whisler
 
 ## Notes
 
-[¹]: venv-in-project 
-	The `pipenv` tool works by making project-specific directories (called virtual environments) that hold the dependencies for that project. Setting the PIPENV_VENV_IN_PROJECT environment variable will indicate to `pipenv` to make this virtual environment within the same directory as the project so that all the files corresponding to a project can be in the same place. This is [not default behavior](https://github.com/pypa/pipenv/issues/1382) (e.g. on Mac, the environments will be placed in `~/.local/share/virtualenv/`).  
+<b id="f1">1</b> The `pipenv` tool works by making project-specific directories (called virtual environments) that hold the dependencies for that project. Setting the `PIPENV_VENV_IN_PROJECT` environment variable will indicate to `pipenv` to make this virtual environment within the same directory as the project so that all the files corresponding to a project can be in the same place. This is [not default behavior](https://github.com/pypa/pipenv/issues/1382) (e.g. on Mac, the environments will be placed in `~/.local/share/virtualenv/`). [↩](#a1)
+
 
