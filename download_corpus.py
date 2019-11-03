@@ -48,9 +48,9 @@ def download_corpus(corpus_path, repo_user='timgianitsos'):
 	if not os.path.isdir(os.path.join(*corpus_path)):
 		try:
 			cmd_list = (
-				f'echo "{os.path.join(*(corpus_path[1:]))}{os.sep}*"'
+				f'echo {"/".join(corpus_path[1:])}/*'
 					+ f' >> {os.path.join(corpus_path[0], ".git", "info", "sparse-checkout")}',
-				f'git -C {corpus_path[0]} fetch --depth=1',
+				f'git -C {corpus_path[0]} fetch --depth=1 origin master',
 				f'git -C {corpus_path[0]} checkout master',
 			)
 			cmd_str = ' && '.join(cmd_list)
