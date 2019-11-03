@@ -1,9 +1,10 @@
 # A Diachronic approach to English
 
 ## Authors
-Andy Kim
 
-David Whisler
+[Andy Kim](https://github.com/andydhkim)
+
+[David Whisler](https://github.com/dwhisler)
 
 [Tim Gianitsos](https://github.com/timgianitsos)
 
@@ -11,11 +12,12 @@ David Whisler
 
 1. Ensure `Python` version 3.8 is installed.
 1. Ensure `pipenv` is installed
+1. Ensure you have `git` at least version 1.9 installed<sup id="a1">[1](#f1)</sup>
 1. While in the project directory, run
 	```bash
 	PIPENV_VENV_IN_PROJECT=true pipenv --python 3.8
 	```
-	This will generate a virtual environment called `.venv` in the current directory that will contain the `Python` dependencies for this project.<sup id="a1">[1](#f1)</sup>
+	This will generate a virtual environment called `.venv` in the current directory that will contain the `Python` dependencies for this project.<sup id="a2">[2](#f2)</sup>
 1. Run 
 	```bash
 	pipenv shell
@@ -39,6 +41,6 @@ David Whisler
 
 ## Notes
 
-<b id="f1">1)</b> The `pipenv` tool works by making project-specific directories (called virtual environments) that hold the dependencies for that project. Setting the `PIPENV_VENV_IN_PROJECT` environment variable will indicate to `pipenv` to make this virtual environment within the same directory as the project so that all the files corresponding to a project can be in the same place. This is [not default behavior](https://github.com/pypa/pipenv/issues/1382) (e.g. on Mac, the environments will be placed in `~/.local/share/virtualenvs/`). [↩](#a1)
+<b id="f1">1)</b> The project uses the `git` protocol to download the corpus. We make use of `git`'s sparse checkout and shallow clone features to download only what we need from the repository (this is done automatically in the code). We must have [at least `git` version 1.9 to perform a sparse checkout and shallow clone](https://stackoverflow.com/a/28039894/7102572).[↩](#a1)
 
-
+<b id="f2">2)</b> The `pipenv` tool works by making project-specific directories (called virtual environments) that hold the dependencies for that project. Setting the `PIPENV_VENV_IN_PROJECT` environment variable will indicate to `pipenv` to make this virtual environment within the same directory as the project so that all the files corresponding to a project can be in the same place. This is [not default behavior](https://github.com/pypa/pipenv/issues/1382) (e.g. on Mac, the environments will normally be placed in `~/.local/share/virtualenvs/` by default). [↩](#a2)

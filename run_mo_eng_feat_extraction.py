@@ -20,7 +20,6 @@ def feature_extraction(output):
 		corpus_dir=os.path.join(*MODERN_ENGLISH_CORPUS_PATH),
 		file_extension_to_parse_function={
 			'txt': qcrit.extract_features.parse_tess,
-			'psd': qcrit.extract_features.parse_tess,
 		},
 		output_file=output
 	)
