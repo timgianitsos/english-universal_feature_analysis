@@ -27,7 +27,7 @@
 	```bash
 	pipenv install --dev
 	```
-	This will install all the packages with versions specified by `Pipfile.lock`. Using `--dev` ensures that even development dependencies should be installed (dev dependencies may include testing and linting frameworks which are not necessary for production). After installation, you can find these dependencies in `<path to virtual environment>/lib/python3.8/site-packages/`.
+	This will install all the packages<sup id="a3">[3](#f3)</sup> with versions specified by `Pipfile.lock`
 1. Run
 	```bash
 	exit
@@ -54,6 +54,8 @@ python run_modern_eng_feat_extract.py modern_english.pickle
 
 ## Notes
 
-<b id="f1">1)</b> The project uses the `git` protocol to download the corpus. We make use of `git`'s sparse checkout and shallow clone features to download only what we need from the repository (this is done automatically in the code). We must have [at least `git` version 1.9 to perform a sparse checkout and shallow clone](https://stackoverflow.com/a/28039894/7102572).[↩](#a1)
+<b id="f1">1)</b> The project uses the `git` protocol to download the corpus. We make use of `git`'s sparse checkout and shallow clone features to download only what we need from the repository (this is done automatically in the code). We must have [at least `git` version 1.9 to perform a sparse checkout and shallow clone](https://stackoverflow.com/a/28039894/7102572). [↩](#a1)
 
 <b id="f2">2)</b> The `pipenv` tool works by making project-specific directories (called virtual environments) that hold the dependencies for that project. Setting the `PIPENV_VENV_IN_PROJECT` environment variable will indicate to `pipenv` to make this virtual environment within the same directory as the project so that all the files corresponding to a project can be in the same place. This is [not default behavior](https://github.com/pypa/pipenv/issues/1382) (e.g. on Mac, the environments will normally be placed in `~/.local/share/virtualenvs/` by default). [↩](#a2)
+
+<b id="f3">3)</b> Using `--dev` ensures that even development dependencies should be installed (dev dependencies may include testing and linting frameworks which are not necessary for normal runtime or production). After installation, you can find all dependencies (regular packages and dev-packages) in `<path to virtual environment>/lib/python3.8/site-packages/`. [↩](#a3)
