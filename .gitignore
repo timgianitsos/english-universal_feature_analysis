@@ -190,4 +190,5 @@ pip-selfcheck.json
 # Project specific files to ignore
 english-diachronic-corpus
 *.pickle
+test-corpus
 

@@ -9,8 +9,10 @@ import subprocess
 
 def download_corpus(corpus_path, repo_user='timgianitsos'):
 	'''
-	Download a corpus from Github with a sparse checkout and shallow clone
+	Download a corpus from Github with a sparse checkout and shallow clone.
 	https://stackoverflow.com/a/28039894/7102572
+
+	If the directory specified by corpus_path already exists, no action will be taken.
 	'''
 
 	# Locally create a directory to hold the corpus, and prepare it for cloning the repo
