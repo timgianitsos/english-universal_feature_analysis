@@ -49,7 +49,7 @@ def download_corpus(corpus_path, repo_user='timgianitsos'):
 		try:
 			cmd_list = (
 				f'echo "{os.path.join(*(corpus_path[1:]))}{os.sep}*"'
-					+ f' >> {corpus_path[0]}/.git/info/sparse-checkout',
+					+ f' >> {os.path.join(corpus_path[0], ".git", "info", "sparse-checkout")}',
 				f'git -C {corpus_path[0]} fetch --depth=1',
 				f'git -C {corpus_path[0]} checkout master',
 			)
