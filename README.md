@@ -8,7 +8,7 @@
 
 [Tim Gianitsos](https://github.com/timgianitsos)
 
-## Development (for Mac and Linux)
+## Setup (for Mac and Linux)
 
 1. Ensure `Python` version 3.8 is installed.
 1. Ensure `pipenv` is installed
@@ -38,6 +38,19 @@
 	pipenv shell
 	```
 	while in the project directory to activate the virtual environment again. This will make `Python` use the configurations in the project's virtual environment.
+
+## Development
+
+You will find the features for Modern English in `modern_english_features.py`.
+
+You can run a feature extraction by running
+```
+python run_modern_eng_feat_extract.py 
+```
+You can output the results of the extraction for further analysis into a pickle file by running
+```
+python run_modern_eng_feat_extract.py modern_english.pickle
+```
 
 ## Notes
 

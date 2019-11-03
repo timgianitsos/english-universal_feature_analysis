@@ -1,4 +1,4 @@
-# pylint: disable = missing-function-docstring
+# pylint: disable = missing-docstring
 '''
 Modern English features
 '''
