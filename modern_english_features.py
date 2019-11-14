@@ -4,10 +4,9 @@ Modern English features
 '''
 
 from statistics import mean
+from collections import defaultdict
 
 from qcrit.textual_feature import textual_feature, setup_tokenizers
-
-from collections import defaultdict
 
 TERMINAL_PUNCTUATION = ('.', '?', '!')
 setup_tokenizers(terminal_punctuation=TERMINAL_PUNCTUATION)
@@ -30,7 +29,7 @@ def ratio_lowercase_to_totalchars(text):
 
 @textual_feature(tokenize_type=None)
 def ratio_punctuation_to_spaces(text):
-	punctuation_signs = ['.', ',', ';', '!', '?','\'', '\"', '(', ')', '-']
+	punctuation_signs = ['.', ',', ';', '!', '?', '\'', '\"', '(', ')', '-']
 	punctuation_cnt = sum(text.count(punc) for punc in punctuation_signs)
 	space_cnt = text.count(' ')
 	return punctuation_cnt / space_cnt
@@ -102,7 +101,7 @@ def num_words_given_word_length(text):
 @textual_feature(tokenize_type='words')
 def num_words_given_interval_word_length(text):
 	# Hard-coded frequency for word lengths 3-5 for now
-	given_word_length_interval = (3,5)
+	given_word_length_interval = (3, 5)
 
 	wordlength_freqs = defaultdict(int)
 	for word in text:
@@ -113,5 +112,5 @@ def num_words_given_interval_word_length(text):
 
 @textual_feature(tokenize_type=None)
 def num_vowels(text):
-	vowels = ['a','e','i','o','u']
+	vowels = ['a', 'e', 'i', 'o', 'u']
 	return sum(text.count(vowel) for vowel in vowels)
