@@ -5,6 +5,7 @@ Modern English feature extraction
 
 import sys
 import os
+import re
 from io import StringIO
 
 import qcrit.extract_features
@@ -18,7 +19,9 @@ def parse_txt(file_name):
 	'''Parse text files'''
 	file_text = StringIO()
 	with open(file_name, mode='r', encoding='utf-8') as file:
+		text_name = os.path.splitext(os.path.basename(file_name))[0].upper()
 		for line in file:
+			line = re.sub(text_name + '.*', '', line)
 			file_text.write(line.strip())
 			file_text.write(' ')
 	return file_text.getvalue()
