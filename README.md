@@ -39,7 +39,7 @@
 
 Using `exit` will exit the virtual environment i.e. it restores the system-level `Python` configurations to your shell. Whenever you want to resume working on the project, run `pipenv shell` while in the project directory to activate the virtual environment again.
 
-Use `pipenv check` to ensure that your `Pipfile` and `Pipfile.lock` are in sync. If there is some discrepancy or you lack dependencies, the run `pipenv install --dev` while your virtual environment is activated. This should ensure that your project has all the necessary dependencies.
+Use `pipenv check` to ensure that your `Pipfile` and `Pipfile.lock` are in sync. If there is some discrepancy or you lack dependencies, then run `pipenv install --dev` while your virtual environment is activated. This should ensure that your project has all the necessary dependencies.
 
 ## Development
 
