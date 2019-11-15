@@ -63,7 +63,7 @@ python run_ml_analyzers.py modern_english.pickle labels/modern_english_prosody.c
 ```
 You can also use `all` to perform all analyses. Combine this with [the `aha` command](https://github.com/theZiz/aha) to output formatted results into a file.
 ```
-python run_ml_analyzers.py modern_english.pickle labels/modern_english_prosody.csv all | aha --black > results/modern_english_prose_verse.html
+python run_ml_analyzers.py modern_english.pickle labels/modern_english_prosody.csv all | aha --black > results/modern_english_prosody.html
 ```
 
 ## Footnotes

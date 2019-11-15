@@ -6,13 +6,18 @@ Analyzer model
 from functools import reduce
 import statistics
 from collections import Counter
+import warnings
 
+from sklearn.exceptions import UndefinedMetricWarning
 import numpy as np
 from tqdm import tqdm
 import sklearn
 from sklearn import svm, neural_network, naive_bayes, ensemble, neighbors
 from sklearn.model_selection import train_test_split, cross_val_score, StratifiedKFold
 from qcrit.model_analyzer import model_analyzer
+
+#Ignores warning for undefined F1-score when a category is never predicted.
+warnings.filterwarnings(action='ignore', category=UndefinedMetricWarning)
 
 RED = '\033[91m'
 GREEN = '\033[92m'

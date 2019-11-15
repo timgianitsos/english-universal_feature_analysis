@@ -1,5 +1,5 @@
 '''
-Generate the csv of labels for files
+Generate the csv of prosody labels for files
 '''
 import os
 from os.path import join, dirname
