@@ -20,7 +20,7 @@
 	which python`grep 'python_version' Pipfile | cut -f 2 -d '"'`
 	```
 	If the version is already installed, a path will be output (e.g. /Library/Frameworks/Python.framework/Versions/3.x/bin/python3.x). If nothing was output, then you don't have the necessary version of `Python` installed. You can install it [here](https://www.python.org/downloads/).
-1. Ensure `pipenv`<sup id="a1">[1](#f1)</sup> is installed by using:
+1. Ensure `pipenv`<sup id="a1">[1](#f1)</sup> is already installed by using:
 	```bash
 	which pipenv
 	```

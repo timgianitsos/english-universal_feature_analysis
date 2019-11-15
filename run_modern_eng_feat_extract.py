@@ -1,4 +1,3 @@
-# pylint: disable = C0330
 '''
 Modern English feature extraction
 '''
@@ -21,7 +20,12 @@ def parse_txt(file_name):
 	with open(file_name, mode='r', encoding='utf-8') as file:
 		text_name = os.path.splitext(os.path.basename(file_name))[0].upper()
 		for line in file:
+
+			# Some lines are tagged with author name and line number. This removes these tags.
+			# e.g. "These vessels are of five kinds.  ADAMS-1787-2,653.17"
+			# becomes "These vessels are of five kinds.  "
 			line = re.sub(text_name + '.*', '', line)
+
 			file_text.write(line.strip())
 			file_text.write(' ')
 	return file_text.getvalue()

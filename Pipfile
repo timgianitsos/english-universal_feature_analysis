@@ -7,8 +7,8 @@ verify_ssl = true
 pylint = "*"
 
 [packages]
-numpy = "*"
 qcrit = "*"
+scikit-learn = "*"
 
 [requires]
-python_version = "3.8"
+python_version = "3.7"
