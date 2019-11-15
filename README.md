@@ -36,19 +36,34 @@
 	```bash
 	pipenv shell
 	```
+
 Using `exit` will exit the virtual environment i.e. it restores the system-level `Python` configurations to your shell. Whenever you want to resume working on the project, run `pipenv shell` while in the project directory to activate the virtual environment again.
+
+Use `pipenv check` to ensure that your `Pipfile` and `Pipfile.lock` are in sync. If there is some discrepancy or you lack dependencies, the run `pipenv install --dev` while your virtual environment is activated. This should ensure that your project has all the necessary dependencies.
 
 ## Development
 
 You will find the features for Modern English in `modern_english_features.py`.
 
-You can run a feature extraction by running
+You can perform a feature extraction by running
 ```
 python run_modern_eng_feat_extract.py 
 ```
 You can output the results of the extraction for further analysis into a pickle file by running
 ```
 python run_modern_eng_feat_extract.py modern_english.pickle
+```
+To perform analyses on the data, run the following. The file `labels/modern_english_prosody.csv` contains the correct labels for each text in the corpus.
+```
+python run_ml_analyzers.py modern_english.pickle labels/modern_english_prosody.csv
+```
+The previous command will prompt you for which analysis you want to perform. You can specify on the command line without being prompted. For example:
+```
+python run_ml_analyzers.py modern_english.pickle labels/modern_english_prosody.csv sample_classifiers
+```
+You can also use `all` to perform all analyses. Combine this with [the `aha` command](https://github.com/theZiz/aha) to output formatted results into a file.
+```
+python run_ml_analyzers.py modern_english.pickle labels/modern_english_prosody.csv all | aha --black > results/modern_english_prose_verse.html
 ```
 
 ## Footnotes
