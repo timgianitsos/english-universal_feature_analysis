@@ -49,44 +49,42 @@ def freq_most_frequent_stop_word(text):
 	stop_word_freqs = defaultdict(int)
 	for sentence in text:
 		stop_word_freqs[sentence[-1]] += 1
-	return max(stop_word_freqs.values())
+	return max(stop_word_freqs.values()) / sum(stop_word_freqs.values())
 
 @textual_feature(tokenize_type='sentence_words')
 def freq_most_frequent_start_word(text):
 	start_word_freqs = defaultdict(int)
 	for sentence in text:
 		start_word_freqs[sentence[0]] += 1
-	return max(start_word_freqs.values())
+	return max(start_word_freqs.values()) / sum(start_word_freqs.values())
 
 @textual_feature(tokenize_type='sentence_words')
 def freq_most_frequent_start_letter_start_word(text):
 	start_letter_start_word_freqs = defaultdict(int)
 	for sentence in text:
-		for letter in sentence[0]:
-			start_letter_start_word_freqs[letter[0]] += 1
-	return max(start_letter_start_word_freqs.values())
+		start_letter_start_word_freqs[sentence[0][0]] += 1
+	return max(start_letter_start_word_freqs.values()) / sum(start_letter_start_word_freqs.values())
 
 @textual_feature(tokenize_type='sentence_words')
 def freq_most_frequent_start_letter_stop_word(text):
 	start_letter_stop_word_freqs = defaultdict(int)
 	for sentence in text:
-		for letter in sentence[-1]:
-			start_letter_stop_word_freqs[letter[0]] += 1
-	return max(start_letter_stop_word_freqs.values())
+		start_letter_stop_word_freqs[sentence[-1][0]] += 1
+	return max(start_letter_stop_word_freqs.values()) / sum(start_letter_stop_word_freqs.values())
 
 @textual_feature(tokenize_type='words')
 def num_single_occurrence_words(text):
 	word_freqs = defaultdict(int)
 	for word in text:
 		word_freqs[word] += 1
-	return sum(1 for frequency in word_freqs.values() if frequency == 1)
+	return sum(1 for frequency in word_freqs.values() if frequency == 1) / len(word_freqs.keys())
 
 @textual_feature(tokenize_type='words')
 def num_double_occurrence_words(text):
 	word_freqs = defaultdict(int)
 	for word in text:
 		word_freqs[word] += 1
-	return sum(1 for frequency in word_freqs.values() if frequency == 2)
+	return sum(1 for frequency in word_freqs.values() if frequency == 2) / len(word_freqs.keys())
 
 @textual_feature(tokenize_type='words')
 def num_words_given_word_length(text):
@@ -96,7 +94,7 @@ def num_words_given_word_length(text):
 	wordlength_freqs = defaultdict(int)
 	for word in text:
 		wordlength_freqs[len(word)] += 1
-	return wordlength_freqs[given_word_length]
+	return wordlength_freqs[given_word_length] / sum(wordlength_freqs.values())
 
 @textual_feature(tokenize_type='words')
 def num_words_given_interval_word_length(text):
@@ -108,9 +106,9 @@ def num_words_given_interval_word_length(text):
 		wordlength_freqs[len(word)] += 1
 	return sum(wordlength_freqs[length] for length in \
 				 range(given_word_length_interval[0], \
-					   given_word_length_interval[1]+1))
+					   given_word_length_interval[1]+1)) / sum(wordlength_freqs.values())
 
 @textual_feature(tokenize_type=None)
 def num_vowels(text):
 	vowels = ['a', 'e', 'i', 'o', 'u']
-	return sum(text.count(vowel) for vowel in vowels)
+	return sum(text.count(vowel) for vowel in vowels) / len(text)
