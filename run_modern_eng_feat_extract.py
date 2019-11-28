@@ -30,7 +30,7 @@ def parse_txt(file_name):
 			file_text.write(' ')
 	return file_text.getvalue()
 
-def feature_extraction(output):
+def feature_extraction(output, features):
 	'''Perform a feature extraction'''
 	download_corpus(MODERN_ENGLISH_CORPUS_PATH)
 	qcrit.extract_features.main(
@@ -38,8 +38,12 @@ def feature_extraction(output):
 		file_extension_to_parse_function={
 			'txt': parse_txt,
 		},
-		output_file=output
+		output_file=output,
+		features=features,
 	)
 
 if __name__ == '__main__':
-	feature_extraction(None if len(sys.argv) <= 1 else sys.argv[1])
+	feature_extraction(
+		None if len(sys.argv) <= 1 or not sys.argv[1].endswith('.pickle') else sys.argv[1],
+		None if len(sys.argv) <= 1 or sys.argv[1].endswith('.pickle') else sys.argv[1:]
+	)
