@@ -6,13 +6,12 @@ import sys
 import os
 import re
 from io import StringIO
+import getopt
 
 import qcrit.extract_features
 
 from modern_english_features import * #pylint: disable = wildcard-import, unused-wildcard-import
 from download_corpus import download_corpus
-
-MODERN_ENGLISH_CORPUS_PATH = ('english-diachronic-corpus', 'Modern_English')
 
 def parse_txt(file_name):
 	'''Parse text files'''
@@ -30,11 +29,11 @@ def parse_txt(file_name):
 			file_text.write(' ')
 	return file_text.getvalue()
 
-def feature_extraction(output, features):
+def feature_extraction(corpus_path, output, features):
 	'''Perform a feature extraction'''
-	download_corpus(MODERN_ENGLISH_CORPUS_PATH)
+	download_corpus(corpus_path)
 	qcrit.extract_features.main(
-		corpus_dir=os.path.join(*MODERN_ENGLISH_CORPUS_PATH),
+		corpus_dir=os.path.join(*corpus_path),
 		file_extension_to_parse_function={
 			'txt': parse_txt,
 		},
@@ -42,8 +41,37 @@ def feature_extraction(output, features):
 		features=features,
 	)
 
-if __name__ == '__main__':
+def main():
+	'''Main'''
+	cp_specifier = 'corpus-path'
+	corpus_path = None
+	f_specifier = 'features'
+	features = []
+	dump_specifier = 'dump'
+	dump = False
+
+	opts, _ = getopt.getopt(sys.argv[1:], shortopts='', longopts=(
+		f'{cp_specifier}=',
+		f'{f_specifier}=',
+		f'{dump_specifier}',
+	))
+	for opt, val in opts:
+		if opt == f'--{cp_specifier}':
+			corpus_path = val
+		if opt == f'--{f_specifier}':
+			features.append(val)
+		if opt == f'--{dump_specifier}':
+			dump = True
+	if not corpus_path:
+		msg = f'Arguments are missing a required option: "--{cp_specifier}=<some path>"'
+		raise getopt.GetoptError(msg)
+
+	corpus_path = corpus_path.split(os.sep)
 	feature_extraction(
-		None if len(sys.argv) <= 1 or not sys.argv[1].endswith('.pickle') else sys.argv[1],
-		None if len(sys.argv) <= 1 or sys.argv[1].endswith('.pickle') else sys.argv[1:]
+		corpus_path,
+		f'{corpus_path[-1].lower()}.pickle' if dump else None,
+		features if features else None,
 	)
+
+if __name__ == '__main__':
+	main()
