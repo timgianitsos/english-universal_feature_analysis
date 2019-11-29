@@ -33,13 +33,11 @@ def download_corpus(corpus_path, repo_user='timgianitsos'):
 					f'git -C {corpus_path[0]} config core.sparseCheckout true'
 				),
 			]
-			cmd_str = ' && '.join(cmd_list)
-			proc = subprocess.run(cmd_str, check=True, shell=True)
+			for cmd in cmd_list:
+				subprocess.run(cmd, check=True, shell=True)
 		except OSError as ex:
 			raise ex
 		except subprocess.CalledProcessError as ex:
-			prgrm_names = {s.split(maxsplit=1)[0] for s in cmd_list}
-			print(f'Your system could not run one of the following commands: {prgrm_names}', file=sys.stderr)
 			raise ex
 
 	# Perform a sparse checkout
@@ -53,11 +51,9 @@ def download_corpus(corpus_path, repo_user='timgianitsos'):
 				f'git -C {corpus_path[0]} fetch --depth=1 origin master',
 				f'git -C {corpus_path[0]} checkout master',
 			)
-			cmd_str = ' && '.join(cmd_list)
-			proc = subprocess.run(cmd_str, check=True, shell=True)
+			for cmd in cmd_list:
+				subprocess.run(cmd, check=True, shell=True)
 		except OSError as ex:
 			raise ex
 		except subprocess.CalledProcessError as ex:
-			prgrm_names = {s.split(maxsplit=1)[0] for s in cmd_list}
-			print(f'Your system could not run one of the following commands: {prgrm_names}', file=sys.stderr)
 			raise ex
