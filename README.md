@@ -47,15 +47,15 @@ You will find the features for Modern English in `modern_english_features.py`.
 
 Run a feature extraction:
 ```
-python run_feat_extract.py --corpus-path=english-diachronic-corpus/Modern_English
+python run_feat_extract.py --corpus-path=english-diachronic-corpus/Modern-English
 ```
 Specify individual features to test:
 ```
-python run_feat_extract.py --corpus-path=english-diachronic-corpus/Modern_English --features={average_sentence_length,ratio_capital_to_lowercase}
+python run_feat_extract.py --corpus-path=english-diachronic-corpus/Modern-English --features={average_sentence_length,ratio_capital_to_lowercase}
 ```
 Dump the results of the extraction for further analysis into a pickle file:
 ```
-python run_feat_extract.py --corpus-path=english-diachronic-corpus/Modern_English --dump
+python run_feat_extract.py --corpus-path=english-diachronic-corpus/Modern-English --dump
 ```
 To perform analyses on the data, run the following. The file `labels/modern_english_prosody.csv` contains the correct labels for each text in the corpus.
 ```
