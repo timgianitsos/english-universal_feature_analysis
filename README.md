@@ -45,13 +45,17 @@ Use `pipenv check` to ensure that your `Pipfile` and `Pipfile.lock` are in sync.
 
 You will find the features for Modern English in `modern_english_features.py`.
 
-You can perform a feature extraction by running
+Run a feature extraction:
 ```
-python run_modern_eng_feat_extract.py 
+python run_feat_extract.py --corpus-path=english-diachronic-corpus/Modern_English
 ```
-You can output the results of the extraction for further analysis into a pickle file by running
+Specify individual features to test:
 ```
-python run_modern_eng_feat_extract.py modern_english.pickle
+python run_feat_extract.py --corpus-path=english-diachronic-corpus/Modern_English --features={average_sentence_length,ratio_capital_to_lowercase}
+```
+Dump the results of the extraction for further analysis into a pickle file:
+```
+python run_feat_extract.py --corpus-path=english-diachronic-corpus/Modern_English --dump
 ```
 To perform analyses on the data, run the following. The file `labels/modern_english_prosody.csv` contains the correct labels for each text in the corpus.
 ```
