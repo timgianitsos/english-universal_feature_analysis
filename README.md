@@ -59,15 +59,15 @@ python run_feat_extract.py --corpus-path=english-diachronic-corpus/Modern_Englis
 ```
 To perform analyses on the data, run the following. The file `labels/modern_english_prosody.csv` contains the correct labels for each text in the corpus.
 ```
-python run_ml_analyzers.py modern_english.pickle labels/modern_english_prosody.csv
+python run_ml_analyzers.py english-diachronic-corpus_modern-english.pickle labels/modern_english_prosody.csv
 ```
 The previous command will prompt you for which analysis you want to perform. You can specify on the command line without being prompted. For example:
 ```
-python run_ml_analyzers.py modern_english.pickle labels/modern_english_prosody.csv sample_classifiers
+python run_ml_analyzers.py english-diachronic-corpus_modern-english.pickle labels/modern_english_prosody.csv sample_classifiers
 ```
 You can also use `all` to perform all analyses. Combine this with [the `aha` command](https://github.com/theZiz/aha) to output formatted results into a file.
 ```
-python run_ml_analyzers.py modern_english.pickle labels/modern_english_prosody.csv all | aha --black > results/modern_english_prosody.html
+python run_ml_analyzers.py english-diachronic-corpus_modern-english.pickle labels/modern_english_prosody.csv all | aha --black > results/modern_english_prosody.html
 ```
 
 ## Footnotes

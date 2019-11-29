@@ -69,7 +69,7 @@ def main():
 	corpus_path = corpus_path.split(os.sep)
 	feature_extraction(
 		corpus_path,
-		f'{corpus_path[-1].lower()}.pickle' if dump else None,
+		f'{"_".join(corpus_path).lower()}.pickle' if dump else None,
 		features if features else None,
 	)
 
