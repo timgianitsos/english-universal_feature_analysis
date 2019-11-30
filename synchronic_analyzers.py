@@ -1,6 +1,6 @@
 # pylint: disable = trailing-whitespace, C0330, unused-argument
 '''
-Analyzer model
+Analyzers for a single time period
 '''
 
 from functools import reduce
