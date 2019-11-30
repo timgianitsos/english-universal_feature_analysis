@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- This file was created with the aha Ansi HTML Adapter. https://github.com/theZiz/aha -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="application/xml+xhtml; charset=UTF-8" />
+<title>stdin</title>
+</head>
+<body style="color:white; background-color:black">
+<pre>
+<span style="filter: contrast(70%) brightness(190%);color:red;">Random Forest cross validation</span>
+	<span style="filter: contrast(70%) brightness(190%);color:yellow;">RF parameters</span> = {'bootstrap': True, 'class_weight': None, 'criterion': 'gini', 'max_depth': None, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 10, 'n_jobs': None, 'oob_score': False, 'random_state': 0, 'verbose': 0, 'warm_start': False}
+
+	<span style="filter: contrast(70%) brightness(190%);color:yellow;">Validate fold 1:</span>
+		<span style="filter: contrast(70%) brightness(190%);color:yellow;">Stats:</span>
+		# correct: <span style="filter: contrast(70%) brightness(190%);color:lime;">31</span> / 34
+		% correct: <span style="filter: contrast(70%) brightness(190%);color:lime;">91.1765</span>%
+		# verse: <span style="filter: contrast(70%) brightness(190%);color:lime;">1</span> / 4
+		% verse: <span style="filter: contrast(70%) brightness(190%);color:lime;">25.0000</span>%
+		# prose: <span style="filter: contrast(70%) brightness(190%);color:lime;">30</span> / 30
+		% prose: <span style="filter: contrast(70%) brightness(190%);color:lime;">100.0000</span>%
+		F1 micro score: <span style="filter: contrast(70%) brightness(190%);color:lime;">91.1765</span>%
+		F1 macro score: <span style="filter: contrast(70%) brightness(190%);color:lime;">67.6190</span>%
+		F1 weighted score: <span style="filter: contrast(70%) brightness(190%);color:lime;">88.7395</span>%
+
+
+	<span style="filter: contrast(70%) brightness(190%);color:yellow;">Validate fold 2:</span>
+		<span style="filter: contrast(70%) brightness(190%);color:yellow;">Stats:</span>
+		# correct: <span style="filter: contrast(70%) brightness(190%);color:lime;">32</span> / 34
+		% correct: <span style="filter: contrast(70%) brightness(190%);color:lime;">94.1176</span>%
+		# verse: <span style="filter: contrast(70%) brightness(190%);color:lime;">2</span> / 4
+		% verse: <span style="filter: contrast(70%) brightness(190%);color:lime;">50.0000</span>%
+		# prose: <span style="filter: contrast(70%) brightness(190%);color:lime;">30</span> / 30
+		% prose: <span style="filter: contrast(70%) brightness(190%);color:lime;">100.0000</span>%
+		F1 micro score: <span style="filter: contrast(70%) brightness(190%);color:lime;">94.1176</span>%
+		F1 macro score: <span style="filter: contrast(70%) brightness(190%);color:lime;">81.7204</span>%
+		F1 weighted score: <span style="filter: contrast(70%) brightness(190%);color:lime;">93.2321</span>%
+
+
+	<span style="filter: contrast(70%) brightness(190%);color:yellow;">Validate fold 3:</span>
+		<span style="filter: contrast(70%) brightness(190%);color:yellow;">Stats:</span>
+		# correct: <span style="filter: contrast(70%) brightness(190%);color:lime;">29</span> / 34
+		% correct: <span style="filter: contrast(70%) brightness(190%);color:lime;">85.2941</span>%
+		# verse: <span style="filter: contrast(70%) brightness(190%);color:lime;">1</span> / 4
+		% verse: <span style="filter: contrast(70%) brightness(190%);color:lime;">25.0000</span>%
+		# prose: <span style="filter: contrast(70%) brightness(190%);color:lime;">28</span> / 30
+		% prose: <span style="filter: contrast(70%) brightness(190%);color:lime;">93.3333</span>%
+		F1 micro score: <span style="filter: contrast(70%) brightness(190%);color:lime;">85.2941</span>%
+		F1 macro score: <span style="filter: contrast(70%) brightness(190%);color:lime;">60.1874</span>%
+		F1 weighted score: <span style="filter: contrast(70%) brightness(190%);color:lime;">84.3642</span>%
+
+
+	<span style="filter: contrast(70%) brightness(190%);color:yellow;">Validate fold 4:</span>
+		<span style="filter: contrast(70%) brightness(190%);color:yellow;">Stats:</span>
+		# correct: <span style="filter: contrast(70%) brightness(190%);color:lime;">30</span> / 33
+		% correct: <span style="filter: contrast(70%) brightness(190%);color:lime;">90.9091</span>%
+		# verse: <span style="filter: contrast(70%) brightness(190%);color:lime;">2</span> / 3
+		% verse: <span style="filter: contrast(70%) brightness(190%);color:lime;">66.6667</span>%
+		# prose: <span style="filter: contrast(70%) brightness(190%);color:lime;">28</span> / 30
+		% prose: <span style="filter: contrast(70%) brightness(190%);color:lime;">93.3333</span>%
+		F1 micro score: <span style="filter: contrast(70%) brightness(190%);color:lime;">90.9091</span>%
+		F1 macro score: <span style="filter: contrast(70%) brightness(190%);color:lime;">76.0291</span>%
+		F1 weighted score: <span style="filter: contrast(70%) brightness(190%);color:lime;">91.4814</span>%
+
+
+	<span style="filter: contrast(70%) brightness(190%);color:yellow;">Validate fold 5:</span>
+		<span style="filter: contrast(70%) brightness(190%);color:yellow;">Stats:</span>
+		# correct: <span style="filter: contrast(70%) brightness(190%);color:lime;">30</span> / 32
+		% correct: <span style="filter: contrast(70%) brightness(190%);color:lime;">93.7500</span>%
+		# verse: <span style="filter: contrast(70%) brightness(190%);color:lime;">3</span> / 3
+		% verse: <span style="filter: contrast(70%) brightness(190%);color:lime;">100.0000</span>%
+		# prose: <span style="filter: contrast(70%) brightness(190%);color:lime;">27</span> / 29
+		% prose: <span style="filter: contrast(70%) brightness(190%);color:lime;">93.1034</span>%
+		F1 micro score: <span style="filter: contrast(70%) brightness(190%);color:lime;">93.7500</span>%
+		F1 macro score: <span style="filter: contrast(70%) brightness(190%);color:lime;">85.7143</span>%
+		F1 weighted score: <span style="filter: contrast(70%) brightness(190%);color:lime;">94.4196</span>%
+
+
+
+<span style="filter: contrast(70%) brightness(190%);color:lime;">Elapsed time: 0.0810 seconds</span>
+
+<span style="filter: contrast(70%) brightness(190%);color:red;">Random Forest averaged cross validation</span>
+Obtain misclassifications by testing different RF seeds and different data splits
+RF seeds tested: 0-19 (inclusive)
+Cross validation splitter seeds tested: 0-19 (inclusive)
+Number of splits: 5
+Labels tested: [verse (value of 0.0), prose (value of 1.0)]
+Features tested: ['average_sentence_length', 'freq_most_frequent_start_letter_start_word', 'freq_most_frequent_start_letter_stop_word', 'freq_most_frequent_start_word', 'freq_most_frequent_stop_word', 'mean_word_length', 'num_double_occurrence_words', 'num_single_occurrence_words', 'num_vowels', 'num_words_given_interval_word_length', 'num_words_given_word_length', 'ratio_capital_to_lowercase', 'ratio_lowercase_to_totalchars', 'ratio_numeric_to_alpha', 'ratio_punctuation_to_spaces']
+RF parameters: {'bootstrap': True, 'class_weight': None, 'criterion': 'gini', 'max_depth': None, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 10, 'n_jobs': 1, 'oob_score': False, 'verbose': 0, 'warm_start': False}
+
+<span style="filter: contrast(70%) brightness(190%);color:yellow;">Averaged percentages from 2000 (20 * 20 * 5) trials.</span>
+	Percentage correct: <span style="filter: contrast(70%) brightness(190%);color:lime;">94.4760</span>% +/- standard deviation of 3.1621%
+	F1 micro score: <span style="filter: contrast(70%) brightness(190%);color:lime;">94.4940</span>% +/- standard deviation of 3.1621%
+	F1 macro score: <span style="filter: contrast(70%) brightness(190%);color:lime;">82.2227</span>% +/- standard deviation of 11.2819%
+	F1 weighted score: <span style="filter: contrast(70%) brightness(190%);color:lime;">93.7973</span>% +/- standard deviation of 3.7422%
+
+
+<span style="filter: contrast(70%) brightness(190%);color:lime;">Elapsed time: 34.5299 seconds</span>
+
+<span style="filter: contrast(70%) brightness(190%);color:red;">Random Forest misclassifications</span>
+Obtain misclassifications by testing different RF seeds and different data splits
+RF seeds tested: 0-19 (inclusive)
+Cross validation splitter seeds tested: 0-19 (inclusive)
+Number of splits: 5
+Labels tested: [verse (value of 0.0), prose (value of 1.0)]
+Features tested: ['average_sentence_length', 'freq_most_frequent_start_letter_start_word', 'freq_most_frequent_start_letter_stop_word', 'freq_most_frequent_start_word', 'freq_most_frequent_stop_word', 'mean_word_length', 'num_double_occurrence_words', 'num_single_occurrence_words', 'num_vowels', 'num_words_given_interval_word_length', 'num_words_given_word_length', 'ratio_capital_to_lowercase', 'ratio_lowercase_to_totalchars', 'ratio_numeric_to_alpha', 'ratio_punctuation_to_spaces']
+RF parameters: {'bootstrap': True, 'class_weight': None, 'criterion': 'gini', 'max_depth': None, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 10, 'n_jobs': 1, 'oob_score': False, 'verbose': 0, 'warm_start': False}
+
+<span style="filter: contrast(70%) brightness(190%);color:yellow;">Misclassifications from 2000 (20 * 20 * 5) trials. Each file was in the testing set 1 / 5 of the time (400 times).</span>
+400 / 400 (100.000%): english-diachronic-corpus/Early-Modern-English/Verse-corpus/agincourt.txt
+400 / 400 (100.000%): english-diachronic-corpus/Early-Modern-English/Verse-corpus/democ_platoniss.txt
+371 / 400 (92.750%): english-diachronic-corpus/Early-Modern-English/Verse-corpus/hesperides.txt
+293 / 400 (73.250%): english-diachronic-corpus/Early-Modern-English/Verse-corpus/Spenser.txt
+291 / 400 (72.750%): english-diachronic-corpus/Early-Modern-English/Verse-corpus/phoenixturtle.txt
+271 / 400 (67.750%): english-diachronic-corpus/Early-Modern-English/Verse-corpus/loverscomplaint.txt
+246 / 400 (61.500%): english-diachronic-corpus/Early-Modern-English/Verse-corpus/lucasta.txt
+206 / 400 (51.500%): english-diachronic-corpus/Early-Modern-English/Plaintext-prose-corpus/mowntayne-e1-p2.txt
+181 / 400 (45.250%): english-diachronic-corpus/Early-Modern-English/Verse-corpus/venus_adonis.txt
+164 / 400 (41.000%): english-diachronic-corpus/Early-Modern-English/Verse-corpus/herrick.txt
+147 / 400 (36.750%): english-diachronic-corpus/Early-Modern-English/Verse-corpus/parregai.txt
+127 / 400 (31.750%): english-diachronic-corpus/Early-Modern-English/Verse-corpus/dryden.txt
+ 77 / 400 (19.250%): english-diachronic-corpus/Early-Modern-English/Plaintext-prose-corpus/hooker-b-e2-p2.txt
+ 65 / 400 (16.250%): english-diachronic-corpus/Early-Modern-English/Plaintext-prose-corpus/mroper-e1-p2.txt
+ 59 / 400 (14.750%): english-diachronic-corpus/Early-Modern-English/Plaintext-prose-corpus/madox-e2-p2.txt
+ 52 / 400 (13.000%): english-diachronic-corpus/Early-Modern-English/Verse-corpus/lucrece.txt
+ 51 / 400 (12.750%): english-diachronic-corpus/Early-Modern-English/Plaintext-prose-corpus/phenry-e3-p2.txt
+ 37 / 400 (9.250%): english-diachronic-corpus/Early-Modern-English/Plaintext-prose-corpus/lisle-e3-p2.txt
+ 37 / 400 (9.250%): english-diachronic-corpus/Early-Modern-English/Plaintext-prose-corpus/farquhar-e3-p2.txt
+ 29 / 400 (7.250%): english-diachronic-corpus/Early-Modern-English/Plaintext-prose-corpus/pepys-e3-p2.txt
+ 20 / 400 (5.000%): english-diachronic-corpus/Early-Modern-English/Plaintext-prose-corpus/fisher-e1-p2.txt
+ 19 / 400 (4.750%): english-diachronic-corpus/Early-Modern-English/Plaintext-prose-corpus/boethel-e2-p2.txt
+ 18 / 400 (4.500%): english-diachronic-corpus/Early-Modern-English/Verse-corpus/parlost.txt
+ 17 / 400 (4.250%): english-diachronic-corpus/Early-Modern-English/Plaintext-prose-corpus/surety-e1-p2.txt
+ 15 / 400 (3.750%): english-diachronic-corpus/Early-Modern-English/Plaintext-prose-corpus/vanbr-e3-p2.txt
+ 14 / 400 (3.500%): english-diachronic-corpus/Early-Modern-English/Plaintext-prose-corpus/fiennes-e3-p2.txt
+ 12 / 400 (3.000%): english-diachronic-corpus/Early-Modern-English/Plaintext-prose-corpus/forman-diary-e2-p2.txt
+ 12 / 400 (3.000%): english-diachronic-corpus/Early-Modern-English/Plaintext-prose-corpus/kpaston-e2-p2.txt
+  9 / 400 (2.250%): english-diachronic-corpus/Early-Modern-English/Plaintext-prose-corpus/underhill-e1-p2.txt
+  8 / 400 (2.000%): english-diachronic-corpus/Early-Modern-English/Plaintext-prose-corpus/hooker-a-e2-p2.txt
+  7 / 400 (1.750%): english-diachronic-corpus/Early-Modern-English/Plaintext-prose-corpus/zouch-e3-p2.txt
+  6 / 400 (1.500%): english-diachronic-corpus/Early-Modern-English/Plaintext-prose-corpus/boethpr-e3-p2.txt
+  5 / 400 (1.250%): english-diachronic-corpus/Early-Modern-English/Plaintext-prose-corpus/gcromw-e1-p2.txt
+  5 / 400 (1.250%): english-diachronic-corpus/Early-Modern-English/Plaintext-prose-corpus/roper-e1-p2.txt
+  4 / 400 (1.000%): english-diachronic-corpus/Early-Modern-English/Plaintext-prose-corpus/edward-e1-p2.txt
+  4 / 400 (1.000%): english-diachronic-corpus/Early-Modern-English/Plaintext-prose-corpus/jubarring-e2-p2.txt
+  3 / 400 (0.750%): english-diachronic-corpus/Early-Modern-English/Plaintext-prose-corpus/chatton-e3-p2.txt
+  2 / 400 (0.500%): english-diachronic-corpus/Early-Modern-English/Plaintext-prose-corpus/wcecil-1580-e2-p2.txt
+  2 / 400 (0.500%): english-diachronic-corpus/Early-Modern-English/Plaintext-prose-corpus/jbarring-e2-p2.txt
+  2 / 400 (0.500%): english-diachronic-corpus/Early-Modern-English/Plaintext-prose-corpus/mtudor-1520-e1-p2.txt
+  1 / 400 (0.250%): english-diachronic-corpus/Early-Modern-English/Plaintext-prose-corpus/moxinden-e2-p2.txt
+  1 / 400 (0.250%): english-diachronic-corpus/Early-Modern-English/Plaintext-prose-corpus/tyndnew-e1-p2.txt
+
+
+<span style="filter: contrast(70%) brightness(190%);color:lime;">Elapsed time: 29.8558 seconds</span>
+
+<span style="filter: contrast(70%) brightness(190%);color:red;">Random Forest feature rankings</span>
+Obtain rankings by testing different RF seeds and different data splits
+RF seeds tested: 0-19 (inclusive)
+Cross validation splitter seeds tested: 0-19 (inclusive)
+Number of splits: 5
+Labels tested: [verse (value of 0.0), prose (value of 1.0)]
+Features tested: ['average_sentence_length', 'freq_most_frequent_start_letter_start_word', 'freq_most_frequent_start_letter_stop_word', 'freq_most_frequent_start_word', 'freq_most_frequent_stop_word', 'mean_word_length', 'num_double_occurrence_words', 'num_single_occurrence_words', 'num_vowels', 'num_words_given_interval_word_length', 'num_words_given_word_length', 'ratio_capital_to_lowercase', 'ratio_lowercase_to_totalchars', 'ratio_numeric_to_alpha', 'ratio_punctuation_to_spaces']
+RF parameters: {'bootstrap': True, 'class_weight': None, 'criterion': 'gini', 'max_depth': None, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 10, 'n_jobs': 1, 'oob_score': False, 'verbose': 0, 'warm_start': False}
+
+<span style="filter: contrast(70%) brightness(190%);color:yellow;">Gini importance averages from 2000 (20 * 20 * 5) trials</span>
+	0.150569 +/- standard deviation of 0.0519: ratio_punctuation_to_spaces
+	0.122478 +/- standard deviation of 0.0615: freq_most_frequent_start_word
+	0.121579 +/- standard deviation of 0.0592: freq_most_frequent_stop_word
+	0.106943 +/- standard deviation of 0.0550: freq_most_frequent_start_letter_stop_word
+	0.101732 +/- standard deviation of 0.0506: ratio_numeric_to_alpha
+	0.073287 +/- standard deviation of 0.0376: num_words_given_interval_word_length
+	0.066638 +/- standard deviation of 0.0354: freq_most_frequent_start_letter_start_word
+	0.040048 +/- standard deviation of 0.0254: num_double_occurrence_words
+	0.038470 +/- standard deviation of 0.0265: num_words_given_word_length
+	0.037226 +/- standard deviation of 0.0219: ratio_capital_to_lowercase
+	0.031043 +/- standard deviation of 0.0211: average_sentence_length
+	0.029234 +/- standard deviation of 0.0201: num_single_occurrence_words
+	0.027403 +/- standard deviation of 0.0197: num_vowels
+	0.026692 +/- standard deviation of 0.0194: ratio_lowercase_to_totalchars
+	0.026659 +/- standard deviation of 0.0193: mean_word_length
+
+
+<span style="filter: contrast(70%) brightness(190%);color:lime;">Elapsed time: 29.5586 seconds</span>
+
+<span style="filter: contrast(70%) brightness(190%);color:red;">Miscellaneous machine learning models:</span>
+
+<span style="filter: contrast(70%) brightness(190%);color:fuchsia;">	RandomForestClassifier</span>
+		Parameters: {'bootstrap': True, 'class_weight': None, 'criterion': 'gini', 'max_depth': None, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 10, 'n_jobs': None, 'oob_score': False, 'random_state': 0, 'verbose': 0, 'warm_start': False}
+
+		<span style="filter: contrast(70%) brightness(190%);color:yellow;">Stats:</span>
+		# correct: <span style="filter: contrast(70%) brightness(190%);color:lime;">61</span> / 67
+		% correct: <span style="filter: contrast(70%) brightness(190%);color:lime;">91.0448</span>%
+		# verse: <span style="filter: contrast(70%) brightness(190%);color:lime;">3</span> / 8
+		% verse: <span style="filter: contrast(70%) brightness(190%);color:lime;">37.5000</span>%
+		# prose: <span style="filter: contrast(70%) brightness(190%);color:lime;">58</span> / 59
+		% prose: <span style="filter: contrast(70%) brightness(190%);color:lime;">98.3051</span>%
+		F1 micro score: <span style="filter: contrast(70%) brightness(190%);color:lime;">91.0448</span>%
+		F1 macro score: <span style="filter: contrast(70%) brightness(190%);color:lime;">72.5410</span>%
+		F1 weighted score: <span style="filter: contrast(70%) brightness(190%);color:lime;">89.6990</span>%
+
+		<span style="filter: contrast(70%) brightness(190%);color:yellow;">Cross Validation:</span>
+		Scores: [1.   0.8  1.   0.95 0.9 ]
+		Avg Accuracy: 0.93 (+/- 0.15)
+
+<span style="filter: contrast(70%) brightness(190%);color:fuchsia;">	SVC</span>
+		Parameters: {'C': 1.0, 'cache_size': 200, 'class_weight': None, 'coef0': 0.0, 'decision_function_shape': 'ovr', 'degree': 3, 'gamma': 1e-05, 'kernel': 'rbf', 'max_iter': -1, 'probability': False, 'random_state': 0, 'shrinking': True, 'tol': 0.001, 'verbose': False}
+
+		<span style="filter: contrast(70%) brightness(190%);color:yellow;">Stats:</span>
+		# correct: <span style="filter: contrast(70%) brightness(190%);color:lime;">59</span> / 67
+		% correct: <span style="filter: contrast(70%) brightness(190%);color:lime;">88.0597</span>%
+		# verse: <span style="filter: contrast(70%) brightness(190%);color:lime;">0</span> / 8
+		% verse: <span style="filter: contrast(70%) brightness(190%);color:lime;">0.0000</span>%
+		# prose: <span style="filter: contrast(70%) brightness(190%);color:lime;">59</span> / 59
+		% prose: <span style="filter: contrast(70%) brightness(190%);color:lime;">100.0000</span>%
+		F1 micro score: <span style="filter: contrast(70%) brightness(190%);color:lime;">88.0597</span>%
+		F1 macro score: <span style="filter: contrast(70%) brightness(190%);color:lime;">46.8254</span>%
+		F1 weighted score: <span style="filter: contrast(70%) brightness(190%);color:lime;">82.4686</span>%
+
+		<span style="filter: contrast(70%) brightness(190%);color:yellow;">Cross Validation:</span>
+		Scores: [0.9 0.9 0.9 0.9 0.9]
+		Avg Accuracy: 0.90 (+/- 0.00)
+
+<span style="filter: contrast(70%) brightness(190%);color:fuchsia;">	GaussianNB</span>
+		Parameters: {'priors': None, 'var_smoothing': 1e-09}
+
+		<span style="filter: contrast(70%) brightness(190%);color:yellow;">Stats:</span>
+		# correct: <span style="filter: contrast(70%) brightness(190%);color:lime;">57</span> / 67
+		% correct: <span style="filter: contrast(70%) brightness(190%);color:lime;">85.0746</span>%
+		# verse: <span style="filter: contrast(70%) brightness(190%);color:lime;">4</span> / 8
+		% verse: <span style="filter: contrast(70%) brightness(190%);color:lime;">50.0000</span>%
+		# prose: <span style="filter: contrast(70%) brightness(190%);color:lime;">53</span> / 59
+		% prose: <span style="filter: contrast(70%) brightness(190%);color:lime;">89.8305</span>%
+		F1 micro score: <span style="filter: contrast(70%) brightness(190%);color:lime;">85.0746</span>%
+		F1 macro score: <span style="filter: contrast(70%) brightness(190%);color:lime;">67.9119</span>%
+		F1 weighted score: <span style="filter: contrast(70%) brightness(190%);color:lime;">85.7751</span>%
+
+		<span style="filter: contrast(70%) brightness(190%);color:yellow;">Cross Validation:</span>
+		Scores: [0.95 0.95 1.   0.95 0.95]
+		Avg Accuracy: 0.96 (+/- 0.04)
+
+<span style="filter: contrast(70%) brightness(190%);color:fuchsia;">	KNeighborsClassifier</span>
+		Parameters: {'algorithm': 'auto', 'leaf_size': 30, 'metric': 'minkowski', 'metric_params': None, 'n_jobs': None, 'n_neighbors': 5, 'p': 2, 'weights': 'uniform'}
+
+		<span style="filter: contrast(70%) brightness(190%);color:yellow;">Stats:</span>
+		# correct: <span style="filter: contrast(70%) brightness(190%);color:lime;">59</span> / 67
+		% correct: <span style="filter: contrast(70%) brightness(190%);color:lime;">88.0597</span>%
+		# verse: <span style="filter: contrast(70%) brightness(190%);color:lime;">0</span> / 8
+		% verse: <span style="filter: contrast(70%) brightness(190%);color:lime;">0.0000</span>%
+		# prose: <span style="filter: contrast(70%) brightness(190%);color:lime;">59</span> / 59
+		% prose: <span style="filter: contrast(70%) brightness(190%);color:lime;">100.0000</span>%
+		F1 micro score: <span style="filter: contrast(70%) brightness(190%);color:lime;">88.0597</span>%
+		F1 macro score: <span style="filter: contrast(70%) brightness(190%);color:lime;">46.8254</span>%
+		F1 weighted score: <span style="filter: contrast(70%) brightness(190%);color:lime;">82.4686</span>%
+
+		<span style="filter: contrast(70%) brightness(190%);color:yellow;">Cross Validation:</span>
+		Scores: [0.85 0.75 0.95 0.9  0.9 ]
+		Avg Accuracy: 0.87 (+/- 0.14)
+
+<span style="filter: contrast(70%) brightness(190%);color:fuchsia;">	MLPClassifier</span>
+		Parameters: {'activation': 'relu', 'alpha': 1e-05, 'batch_size': 'auto', 'beta_1': 0.9, 'beta_2': 0.999, 'early_stopping': False, 'epsilon': 1e-08, 'hidden_layer_sizes': (12,), 'learning_rate': 'constant', 'learning_rate_init': 0.001, 'max_iter': 200, 'momentum': 0.9, 'n_iter_no_change': 10, 'nesterovs_momentum': True, 'power_t': 0.5, 'random_state': 0, 'shuffle': True, 'solver': 'lbfgs', 'tol': 0.0001, 'validation_fraction': 0.1, 'verbose': False, 'warm_start': False}
+
+		<span style="filter: contrast(70%) brightness(190%);color:yellow;">Stats:</span>
+		# correct: <span style="filter: contrast(70%) brightness(190%);color:lime;">8</span> / 67
+		% correct: <span style="filter: contrast(70%) brightness(190%);color:lime;">11.9403</span>%
+		# verse: <span style="filter: contrast(70%) brightness(190%);color:lime;">8</span> / 8
+		% verse: <span style="filter: contrast(70%) brightness(190%);color:lime;">100.0000</span>%
+		# prose: <span style="filter: contrast(70%) brightness(190%);color:lime;">0</span> / 59
+		% prose: <span style="filter: contrast(70%) brightness(190%);color:lime;">0.0000</span>%
+		F1 micro score: <span style="filter: contrast(70%) brightness(190%);color:lime;">11.9403</span>%
+		F1 macro score: <span style="filter: contrast(70%) brightness(190%);color:lime;">10.6667</span>%
+		F1 weighted score: <span style="filter: contrast(70%) brightness(190%);color:lime;">2.5473</span>%
+
+		<span style="filter: contrast(70%) brightness(190%);color:yellow;">Cross Validation:</span>
+		Scores: [0.1 0.1 0.1 0.1 0.1]
+		Avg Accuracy: 0.10 (+/- 0.00)
+
+
+<span style="filter: contrast(70%) brightness(190%);color:lime;">Elapsed time: 0.1546 seconds</span>
+
+</pre>
+</body>
+</html>
