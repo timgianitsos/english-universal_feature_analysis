@@ -13,8 +13,9 @@ import numpy as np
 from tqdm import tqdm
 import sklearn
 from sklearn import svm, neural_network, naive_bayes, ensemble, neighbors
-from sklearn.model_selection import train_test_split, cross_val_score, StratifiedKFold
+from sklearn.model_selection import train_test_split, cross_val_score, StratifiedKFold, GridSearchCV
 from qcrit.model_analyzer import model_analyzer
+
 
 #Ignores warning for undefined F1-score when a category is never predicted.
 warnings.filterwarnings(action='ignore', category=UndefinedMetricWarning)
@@ -258,6 +259,41 @@ def random_forest_feature_rankings(data, target, file_names, feature_names, labe
 		' (' + str(rf_trials) + ' * ' + str(kfold_trials) + ' * ' + str(splits) + ') trials' + RESET)
 	for t in sorted([(feat, rank) for feat, rank in feature_rankings.items()], key=lambda s: -1 * s[1].mean()):
 		print('\t' + '%.6f +/- standard deviation of %.4f' % (t[1].mean(), t[1].std()) + ': ' + t[0])
+
+@model_analyzer()
+def random_forest_hyper_parameters(data, target, file_names, feature_names, labels_key):
+	default_forest_params = {
+		'bootstrap': True, 'class_weight': None, 'max_depth': None, 
+		'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 
+		'min_impurity_split': None, 'min_samples_split': 2, 
+		'min_weight_fraction_leaf': 0.0, 'n_jobs': 1, 'oob_score': False, 
+		'verbose': 0, 'warm_start': False
+	}
+
+	candidate_params = {
+		'max_features': range(int(data.shape[1] ** 0.5), data.shape[1]),
+		'n_estimators': (10, 50, 100),
+		# 'min_samples_leaf': range(1, int(len(target) ** 0.5)),
+		# 'criterion': ('gini', 'entropy'),
+	}
+	print(f'Testing candidate parameters {candidate_params}')
+
+	best_params = GridSearchCV(
+		ensemble.RandomForestClassifier(**default_forest_params), candidate_params,
+		verbose=2, cv=3,
+	).fit(data, target).best_params_
+	print(f'Best parameters: {best_params}')
+	clf = ensemble.RandomForestClassifier(**default_forest_params, **best_params)
+
+	print('RMSE from cross-validation = {}'.format(statistics.mean(
+		(-v)**0.5 for v in cross_val_score(
+			clf, data, target,
+			scoring='neg_mean_squared_error', cv=5
+		)
+	)))
+	print('R^2 from cross-validation = {}'.format(
+		statistics.mean(cross_val_score(clf, data, target, cv=5))
+	))
 
 @model_analyzer()
 def sample_classifiers(data, target, file_names, feature_names, labels_key):
