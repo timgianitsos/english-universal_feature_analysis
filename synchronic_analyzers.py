@@ -276,6 +276,7 @@ def random_forest_hyper_parameters(data, target, file_names, feature_names, labe
 		# 'min_samples_leaf': range(1, int(len(target) ** 0.5)),
 		# 'criterion': ('gini', 'entropy'),
 	}
+	#Best parameters: {'criterion': 'gini', 'max_features': 11, 'min_samples_leaf': 1, 'n_estimators': 100}
 	print(f'Testing candidate parameters {candidate_params}')
 
 	best_params = GridSearchCV(
@@ -284,15 +285,8 @@ def random_forest_hyper_parameters(data, target, file_names, feature_names, labe
 	).fit(data, target).best_params_
 	print(f'Best parameters: {best_params}')
 	clf = ensemble.RandomForestClassifier(**default_forest_params, **best_params)
-
-	print('RMSE from cross-validation = {}'.format(statistics.mean(
-		(-v)**0.5 for v in cross_val_score(
-			clf, data, target,
-			scoring='neg_mean_squared_error', cv=5
-		)
-	)))
-	print('R^2 from cross-validation = {}'.format(
-		statistics.mean(cross_val_score(clf, data, target, cv=5))
+	print('accuracy from cross-validation = {}'.format(
+		statistics.mean(cross_val_score(clf, data, target, scoring='accuracy', cv=5))
 	))
 
 @model_analyzer()
