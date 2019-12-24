@@ -7,7 +7,7 @@ verify_ssl = true
 pylint = "*"
 
 [packages]
-qcrit = "*"
+qcrit = "==0.0.13"
 scikit-learn = "*"
 
 [requires]
