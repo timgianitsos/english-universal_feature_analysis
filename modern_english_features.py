@@ -24,21 +24,15 @@ def ratio_capital_to_lowercase(text):
 @textual_feature(tokenize_type='words')
 def ratio_lowercase_to_totalchars(text):
 	lowercase_cnt = sum(1 for word in text for letter in word if letter.islower())
-	total_cnt = sum(1 for word in text for letter in word)
+	total_cnt = sum(len(word) for word in text)
 	return lowercase_cnt / total_cnt
 
 @textual_feature(tokenize_type=None)
 def ratio_punctuation_to_spaces(text):
-	punctuation_signs = ['.', ',', ';', '!', '?', '\'', '\"', '(', ')', '-']
+	punctuation_signs = ('.', ',', ';', '!', '?', '\'', '\"', '(', ')', '-')
 	punctuation_cnt = sum(text.count(punc) for punc in punctuation_signs)
 	space_cnt = text.count(' ')
 	return punctuation_cnt / space_cnt
-
-@textual_feature(tokenize_type='words')
-def ratio_numeric_to_alpha(text):
-	numeric_cnt = sum(1 for word in text for char in word if char.isnumeric())
-	total_cnt = sum(1 for word in text for letter in word)
-	return numeric_cnt / total_cnt
 
 @textual_feature(tokenize_type='words')
 def mean_word_length(text):

@@ -25,7 +25,12 @@ def parse_txt(file_name):
 			# becomes "These vessels are of five kinds.  "
 			line = re.sub(text_name + '.*', '', line)
 
-			file_text.write(line.strip())
+			# Remove blank lines, and remove whitespace at the beginning and end of each line.
+			# This still preserves multiple consecutive whitespaces within a line
+			line = line.strip()
+			if not line:
+				continue
+			file_text.write(line)
 			file_text.write(' ')
 	return file_text.getvalue()
 
