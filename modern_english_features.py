@@ -10,7 +10,7 @@ from qcrit.textual_feature import textual_feature, setup_tokenizers
 
 TERMINAL_PUNCTUATION = ('.', '?', '!')
 ALL_PUNCTUATION_SIGNS = {*TERMINAL_PUNCTUATION, ',', ';', '\'', '\"', '(', ')', '-'}
-setup_tokenizers(terminal_punctuation=TERMINAL_PUNCTUATION)
+setup_tokenizers(terminal_punctuation=TERMINAL_PUNCTUATION, language='english')
 
 @textual_feature(tokenize_type='sentence_words')
 def average_sentence_length(text):
