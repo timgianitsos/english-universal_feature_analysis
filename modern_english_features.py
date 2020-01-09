@@ -4,11 +4,12 @@ Modern English features
 '''
 
 from statistics import mean
-from collections import defaultdict
+from collections import defaultdict, Counter
 
 from qcrit.textual_feature import textual_feature, setup_tokenizers
 
 TERMINAL_PUNCTUATION = ('.', '?', '!')
+ALL_PUNCTUATION_SIGNS = {*TERMINAL_PUNCTUATION, ',', ';', '\'', '\"', '(', ')', '-'}
 setup_tokenizers(terminal_punctuation=TERMINAL_PUNCTUATION)
 
 @textual_feature(tokenize_type='sentence_words')
@@ -29,8 +30,7 @@ def ratio_lowercase_to_totalchars(text):
 
 @textual_feature(tokenize_type=None)
 def ratio_punctuation_to_spaces(text):
-	punctuation_signs = ('.', ',', ';', '!', '?', '\'', '\"', '(', ')', '-')
-	punctuation_cnt = sum(text.count(punc) for punc in punctuation_signs)
+	punctuation_cnt = sum(text.count(punc) for punc in ALL_PUNCTUATION_SIGNS)
 	space_cnt = text.count(' ')
 	return punctuation_cnt / space_cnt
 
@@ -40,10 +40,13 @@ def mean_word_length(text):
 
 @textual_feature(tokenize_type='sentence_words')
 def freq_most_frequent_stop_word(text):
-	stop_word_freqs = defaultdict(int)
-	for sentence in text:
-		stop_word_freqs[sentence[-1]] += 1
-	return max(stop_word_freqs.values()) / sum(stop_word_freqs.values())
+	stop_word_cnts = Counter(
+		#Search backward for the first non-punctuation token. If none exists,
+		#then we consider this an edge case: we regard the sentence as ending with the empty string
+		next((word for word in reversed(sentence) if word not in ALL_PUNCTUATION_SIGNS), '')
+		for sentence in text if len(sentence) > 1 #sentence can't be only terminal punctuation mark
+	)
+	return stop_word_cnts.most_common(1)[0][1] / len(text)
 
 @textual_feature(tokenize_type='sentence_words')
 def freq_most_frequent_start_word(text):

@@ -25,6 +25,13 @@ def parse_txt(file_name):
 			# becomes "These vessels are of five kinds.  "
 			line = re.sub(text_name + '.*', '', line)
 
+			# This removes each xml tag and a single preceeding space if a preceeding space exists.
+			line = re.sub(r' ?<[^>]+>', '', line)
+
+			# This removes each appearence of {TEXT:} and {COM:} tokens. It is not clear what
+			# their appearance is an artifact of, but they interfere with the content of the text.
+			line = re.sub(r'{ ?(TEXT|COM):[^}]+}', '', line)
+
 			# Remove blank lines, and remove whitespace at the beginning and end of each line.
 			# This still preserves multiple consecutive whitespaces within a line
 			line = line.strip()
