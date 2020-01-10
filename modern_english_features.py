@@ -5,7 +5,7 @@ Modern English features
 
 import re
 from statistics import mean
-from collections import defaultdict, Counter
+from collections import Counter
 from string import punctuation
 
 from qcrit.textual_feature import textual_feature, setup_tokenizers
@@ -96,38 +96,29 @@ def freq_most_frequent_start_letter_stop_word(text):
 	)
 
 @textual_feature(tokenize_type='words')
-def num_single_occurrence_words(text):
+def freq_single_occurrence_words(text):
 	counts = Counter(word for word in text if _WORD_REGEX.match(word))
 	return sum(freq for _, freq in counts.items() if freq == 1) / sum(counts.values())
 
 @textual_feature(tokenize_type='words')
-def num_double_occurrence_words(text):
+def freq_double_occurrence_words(text):
 	counts = Counter(word for word in text if _WORD_REGEX.match(word))
 	return sum(freq for _, freq in counts.items() if freq == 2) / sum(counts.values())
 
 @textual_feature(tokenize_type='words')
-def num_words_given_word_length(text):
-	# Hard-coded frequency for word length 4 for now
-	given_word_length = 4
-
-	wordlength_freqs = defaultdict(int)
-	for word in text:
-		wordlength_freqs[len(word)] += 1
-	return wordlength_freqs[given_word_length] / sum(wordlength_freqs.values())
+def freq_words_with_word_length_three(text):
+	counts = Counter(
+		'invalid_word_placeholder' if not _WORD_REGEX.match(word) else
+		'valid_word_bad_len_placeholder' if len(word) != 3 else
+		'valid_word_valid_len_placeholder' for word in text
+	)
+	return counts['valid_word_valid_len_placeholder'] / (len(text) - counts['invalid_word_placeholder'])
 
 @textual_feature(tokenize_type='words')
-def num_words_given_interval_word_length(text):
-	# Hard-coded frequency for word lengths 3-5 for now
-	given_word_length_interval = (3, 5)
-
-	wordlength_freqs = defaultdict(int)
-	for word in text:
-		wordlength_freqs[len(word)] += 1
-	return sum(wordlength_freqs[length] for length in \
-				 range(given_word_length_interval[0], \
-					   given_word_length_interval[1]+1)) / sum(wordlength_freqs.values())
-
-@textual_feature(tokenize_type=None)
-def num_vowels(text):
-	vowels = ['a', 'e', 'i', 'o', 'u']
-	return sum(text.count(vowel) for vowel in vowels) / len(text)
+def freq_words_in_interval_word_length_4_6_inclusive(text):
+	counts = Counter(
+		'invalid_word_placeholder' if not _WORD_REGEX.match(word) else
+		'valid_word_bad_len_placeholder' if not 4 <= len(word) <= 6 else
+		'valid_word_valid_len_placeholder' for word in text
+	)
+	return counts['valid_word_valid_len_placeholder'] / (len(text) - counts['invalid_word_placeholder'])
