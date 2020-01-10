@@ -44,27 +44,16 @@ def ratio_punctuation_to_spaces(text):
 def mean_word_length(text):
 	return mean(len(word) for word in text if _WORD_REGEX.match(word))
 
-def _counter_helper(generator, sentence_cnt):
+def _sentence_boundary_counter_helper(generator, sentence_cnt):
 	counts = Counter(generator)
 	sent_cnt_with_only_non_words = counts[_DEGENERATE_PLACEHOLDER]
 	del counts[_DEGENERATE_PLACEHOLDER] #remove placeholder for sentences with only non-words
-	assert len(counts) != 0, f'Parsed invalid file with only non-word characters'
+	assert len(counts) != 0, f'Parsed invalid text with only non-word characters'
 	return counts.most_common(1)[0][1] / (sentence_cnt - sent_cnt_with_only_non_words)
 
 @textual_feature(tokenize_type='sentence_words')
-def freq_most_frequent_stop_word(text):
-	return _counter_helper(
-		(
-			#Search backward for last word token in sentence
-			next((word for word in reversed(sentence) if _WORD_REGEX.match(word)), _DEGENERATE_PLACEHOLDER)
-			for sentence in text
-		),
-		len(text)
-	)
-
-@textual_feature(tokenize_type='sentence_words')
 def freq_most_frequent_start_word(text):
-	return _counter_helper(
+	return _sentence_boundary_counter_helper(
 		(
 			#Search forward for first word token in sentence
 			next((word for word in sentence if _WORD_REGEX.match(word)), _DEGENERATE_PLACEHOLDER)
@@ -74,8 +63,19 @@ def freq_most_frequent_start_word(text):
 	)
 
 @textual_feature(tokenize_type='sentence_words')
+def freq_most_frequent_stop_word(text):
+	return _sentence_boundary_counter_helper(
+		(
+			#Search backward for last word token in sentence
+			next((word for word in reversed(sentence) if _WORD_REGEX.match(word)), _DEGENERATE_PLACEHOLDER)
+			for sentence in text
+		),
+		len(text)
+	)
+
+@textual_feature(tokenize_type='sentence_words')
 def freq_most_frequent_start_letter_start_word(text):
-	return _counter_helper(
+	return _sentence_boundary_counter_helper(
 		(
 			next((word for word in sentence if _WORD_REGEX.match(word)), _DEGENERATE_PLACEHOLDER)[0].lower()
 			for sentence in text
@@ -85,24 +85,25 @@ def freq_most_frequent_start_letter_start_word(text):
 
 @textual_feature(tokenize_type='sentence_words')
 def freq_most_frequent_start_letter_stop_word(text):
-	start_letter_stop_word_freqs = defaultdict(int)
-	for sentence in text:
-		start_letter_stop_word_freqs[sentence[-1][0]] += 1
-	return max(start_letter_stop_word_freqs.values()) / sum(start_letter_stop_word_freqs.values())
+	return _sentence_boundary_counter_helper(
+		(
+			next((
+				word for word in reversed(sentence) if _WORD_REGEX.match(word)
+			), _DEGENERATE_PLACEHOLDER)[0].lower()
+			for sentence in text
+		),
+		len(text)
+	)
 
 @textual_feature(tokenize_type='words')
 def num_single_occurrence_words(text):
-	word_freqs = defaultdict(int)
-	for word in text:
-		word_freqs[word] += 1
-	return sum(1 for frequency in word_freqs.values() if frequency == 1) / len(word_freqs.keys())
+	counts = Counter(word for word in text if _WORD_REGEX.match(word))
+	return sum(freq for _, freq in counts.items() if freq == 1) / sum(counts.values())
 
 @textual_feature(tokenize_type='words')
 def num_double_occurrence_words(text):
-	word_freqs = defaultdict(int)
-	for word in text:
-		word_freqs[word] += 1
-	return sum(1 for frequency in word_freqs.values() if frequency == 2) / len(word_freqs.keys())
+	counts = Counter(word for word in text if _WORD_REGEX.match(word))
+	return sum(freq for _, freq in counts.items() if freq == 2) / sum(counts.values())
 
 @textual_feature(tokenize_type='words')
 def num_words_given_word_length(text):
