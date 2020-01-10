@@ -3,14 +3,20 @@
 Modern English features
 '''
 
+import re
 from statistics import mean
 from collections import defaultdict, Counter
+from string import punctuation
 
 from qcrit.textual_feature import textual_feature, setup_tokenizers
 
 TERMINAL_PUNCTUATION = ('.', '?', '!')
-ALL_PUNCTUATION_SIGNS = {*TERMINAL_PUNCTUATION, ',', ';', '\'', '\"', '(', ')', '-'}
 setup_tokenizers(terminal_punctuation=TERMINAL_PUNCTUATION, language='english')
+
+_WORD_REGEX = re.compile(r'^\w+$')
+_ALL_PUNCTUATION_MARKS = f'{punctuation}‘’“”' #include slant quotes
+_DEGENERATE_PLACEHOLDER = '@'
+assert not _WORD_REGEX.match(_DEGENERATE_PLACEHOLDER) and len(_DEGENERATE_PLACEHOLDER) >= 1
 
 @textual_feature(tokenize_type='sentence_words')
 def average_sentence_length(text):
@@ -30,37 +36,52 @@ def ratio_lowercase_to_totalchars(text):
 
 @textual_feature(tokenize_type=None)
 def ratio_punctuation_to_spaces(text):
-	punctuation_cnt = sum(text.count(punc) for punc in ALL_PUNCTUATION_SIGNS)
+	punctuation_cnt = sum(text.count(punc) for punc in _ALL_PUNCTUATION_MARKS)
 	space_cnt = text.count(' ')
 	return punctuation_cnt / space_cnt
 
 @textual_feature(tokenize_type='words')
 def mean_word_length(text):
-	return mean(len(word) for word in text)
+	return mean(len(word) for word in text if _WORD_REGEX.match(word))
+
+def _counter_helper(generator, sentence_cnt):
+	counts = Counter(generator)
+	sent_cnt_with_only_non_words = counts[_DEGENERATE_PLACEHOLDER]
+	del counts[_DEGENERATE_PLACEHOLDER] #remove placeholder for sentences with only non-words
+	assert len(counts) != 0, f'Parsed invalid file with only non-word characters'
+	return counts.most_common(1)[0][1] / (sentence_cnt - sent_cnt_with_only_non_words)
 
 @textual_feature(tokenize_type='sentence_words')
 def freq_most_frequent_stop_word(text):
-	stop_word_cnts = Counter(
-		#Search backward for the first non-punctuation token. If none exists,
-		#then we consider this an edge case: we regard the sentence as ending with the empty string
-		next((word for word in reversed(sentence) if word not in ALL_PUNCTUATION_SIGNS), '')
-		for sentence in text if len(sentence) > 1 #sentence can't be only terminal punctuation mark
+	return _counter_helper(
+		(
+			#Search backward for last word token in sentence
+			next((word for word in reversed(sentence) if _WORD_REGEX.match(word)), _DEGENERATE_PLACEHOLDER)
+			for sentence in text
+		),
+		len(text)
 	)
-	return stop_word_cnts.most_common(1)[0][1] / len(text)
 
 @textual_feature(tokenize_type='sentence_words')
 def freq_most_frequent_start_word(text):
-	start_word_freqs = defaultdict(int)
-	for sentence in text:
-		start_word_freqs[sentence[0]] += 1
-	return max(start_word_freqs.values()) / sum(start_word_freqs.values())
+	return _counter_helper(
+		(
+			#Search forward for first word token in sentence
+			next((word for word in sentence if _WORD_REGEX.match(word)), _DEGENERATE_PLACEHOLDER)
+			for sentence in text
+		),
+		len(text)
+	)
 
 @textual_feature(tokenize_type='sentence_words')
 def freq_most_frequent_start_letter_start_word(text):
-	start_letter_start_word_freqs = defaultdict(int)
-	for sentence in text:
-		start_letter_start_word_freqs[sentence[0][0]] += 1
-	return max(start_letter_start_word_freqs.values()) / sum(start_letter_start_word_freqs.values())
+	return _counter_helper(
+		(
+			next((word for word in sentence if _WORD_REGEX.match(word)), _DEGENERATE_PLACEHOLDER)[0].lower()
+			for sentence in text
+		),
+		len(text)
+	)
 
 @textual_feature(tokenize_type='sentence_words')
 def freq_most_frequent_start_letter_stop_word(text):
