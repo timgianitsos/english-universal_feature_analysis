@@ -9,8 +9,9 @@ from io import StringIO
 import getopt
 
 import qcrit.extract_features
+from qcrit.textual_feature import setup_tokenizers
+import qcrit.features.universal_features #seemingly unused, but actually allows the recognition of features
 
-from modern_english_features import * #pylint: disable = wildcard-import, unused-wildcard-import
 from download_corpus import download_corpus
 
 def parse_txt(file_name):
@@ -44,6 +45,7 @@ def parse_txt(file_name):
 def feature_extraction(corpus_path, output, features):
 	'''Perform a feature extraction'''
 	download_corpus(corpus_path)
+	setup_tokenizers(terminal_punctuation=('.', '?', '!'), language='english')
 	qcrit.extract_features.main(
 		corpus_dir=os.path.join(*corpus_path),
 		file_extension_to_parse_function={

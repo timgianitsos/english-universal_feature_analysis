@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "b9fa2dc1d02ff87f0d15568b4a72c07f445cfb9e20dc6e0d12f615b6c2b0450c"
+            "sha256": "97d053f3c29c867d36f675081fe3c2b134a5d072c7b2638ecc22e4ea06ac9847"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -57,11 +57,11 @@
         },
         "qcrit": {
             "hashes": [
-                "sha256:343938df583b8805f5becdf8c6cd634bfb151ad384b1000b7aa485362c0d795a",
-                "sha256:c3c0704de652e6e8299461304d4e2a3f6f0031168fad9fdf79ffb9ee408b7f7a"
+                "sha256:6995e4b5c60aa78455958dc5d597405cc8cb5780481f81e5575bb5617208b79b",
+                "sha256:a397f21fbf90f855865f6ee83e008c776554daa39a50446a114dd7d5c366ccd8"
             ],
             "index": "pypi",
-            "version": "==0.0.16"
+            "version": "==0.0.17"
         },
         "scikit-learn": {
             "hashes": [
